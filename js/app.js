@@ -77,11 +77,9 @@ gl.useProgram(program);
 
 
 function draw() {
-    // 我就画一次，没有不断的画
     gl.clear(gl.COLOR_BUFFER_BIT);
     // 这里，最终我们画了一个三角形，三个参数分别意思是，画什么，从哪个顶点开始，画几个顶点
     gl.drawArrays(gl.TRIANGLES, 0, 3);
 }
 
-draw();
-
+setInterval(draw, 15);
