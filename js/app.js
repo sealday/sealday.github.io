@@ -4,7 +4,7 @@ var canvas = document.getElementById("canvas");
 var gl = canvas.getContext("webgl");
 
 if (gl == null)
-    gl = canvas.getContext("experimental-webgl");
+    gl = canvas.getContext("experimental-webgl", { preserveDrawingBuffer: true });
 
 // 设定清除颜色（背景色）
 gl.clearColor(0.2, 0.3, 0.4, 1.0);
