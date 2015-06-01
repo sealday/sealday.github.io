@@ -6,6 +6,22 @@
 </head>
 <body>
 <h2>small SEAL</h2>
-<a href="about.html"> about me ... lolo</a>
+    
+    
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <a href="about.html"> about me ... lolo</a>  
+    
+    <script id="vShader" type="x-shader/x-vertex">
+        attribute vec3 position;
+        void main() {
+            gl_Position = vec4(position, 1.0);
+        }
+    </script>
+    <script id="fShader" type="x-shader/x-fragment">
+        void main() {
+            gl_FragColor = vec4(0.8, 0.8, 0.2, 1.0);
+        }
+    </script>
+    <script src="js/app.js"></script>
 </body>
 </html>
