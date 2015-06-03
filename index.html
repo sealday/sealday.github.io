@@ -14,8 +14,9 @@
     <!-- 这里是顶点着色器的代码 -->
     <script id="vShader" type="x-shader/x-vertex">
         attribute vec3 position; // 这个代表输入的变量
+        uniform mat4 model;
         void main() {
-            gl_Position = vec4(position, 1.0); // 这里，每一个顶点经过变换之后输出
+            gl_Position = model * vec4(position, 1.0); // 这里，每一个顶点经过变换之后输出
         }
     </script>
     <script id="fShader" type="x-shader/x-fragment">
