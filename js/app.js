@@ -79,12 +79,13 @@ gl.useProgram(program);
 // add model
 var modelLoc = gl.getUniformLocation(program, "model");
 var model = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
-gl.uniformMatrix4fv(modelLoc, false,  model);
+
 
 
 function draw() {
     gl.clear(gl.COLOR_BUFFER_BIT);
     // 这里，最终我们画了一个三角形，三个参数分别意思是，画什么，从哪个顶点开始，画几个顶点
+    gl.uniformMatrix4fv(modelLoc, false,  model);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
 }
 
