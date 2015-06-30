@@ -14,25 +14,69 @@
       <li>WebStorm(可选)</li>
     </ul>
 
-    <h4>npm 命令</h4>
+    <h4>说明</h4>
+    <ul>
+      <li>下面的例子中可能包含 bash 命令，所以，在win下建议使用 git bash 而不是 cmd</li>
+      <li>如果是极端windows分子的话，也可以使用PowerShell</li>
+      <li>请记住，生成的项目是可以被你任意改造的，不要拘泥于项目生成的</li>
+    </ul>
+
+    <h4>使用到的命令</h4>
+    <ul>
+      <li><a href="#npm">npm 命令</a></li>
+      <li><a href="#bower">bower 命令</a></li>
+      <li><a href="#express">express 命令</a></li>
+    </ul>
+
+    <h4>几个例子</h4>
+    <ul>
+      <li><a href="#ex1">关于 express 项目的一个例子</a></li>
+      <li><a href="#ex2">关于 angular 前端项目的一个例子</a></li>
+    </ul>
+
+    <h4 id="npm">npm 命令</h4>
     <p>初始化 npm 项目的时候可以使用 npm init</p>
     <p>基本使用方式为 npm install &lt;name&gt; [--save]</p>
     <p>需要安装为命令的时候可以使用 npm install --global &lt;name&gt;</p>
     <p>如果需要通过package.json来安装的话（在当前目录下有package.json），可以直接执行npm install</p>
     <p>更多的使用方式，可以参考 npm help install，或者更通用的 npm help</p>
 
-    <h4>bower 命令</h4>
+    <h4 id="bower">bower 命令</h4>
     <p>初始化 bower 项目的时候可以使用 bower init</p>
     <p>基本使用方式为 bower install &lt;name&gt; [--save]</p>
     <p>如果需要通过bower.json来安装的话（在当前目录下有bower.json），可以直接执行 bower install</p>
     <p>更多的使用方式，可以参考 bower help install，或者更通用的 bower help</p>
 
-    <h4>express 命令</h4>
+    <h4 id="express">express 命令</h4>
     <p>这个命令本身并不是 express 模块的一部分</p>
     <p>它其实是 express-generator 模块的一部分</p>
     <p>我们可以通过 npm install -g express-generator 来安装它</p>
     <p>为什么我们要使用它呢，因为它可以替我们生成基本的 express 项目</p>
     <p>一个 express 项目本身是一个 npm 项目，可以认为是包含了 express 这个依赖的 npm 项目就算是它了</p>
+
+    <h4 id="nodemon">nodemon 命令</h4>
+    <p>这个命令是推荐安装的，实现自动重启服务器</p>
+    <p>自动重启服务器可以使用grunt配合插件使用，但是，这个对于新手来说更加容易接受</p>
+    <p>这个命令的使用方式就是在项目根目录中，使用 nodemon 启动该项目</p>
+    <p>详见<a href="#ex1">第一个例子</a></p>
+
+    <h4 id="ex1">一个例子</h4>
+    <ol>
+      <li>npm install -g express-generator # 先安装 express-generator</li>
+      <li>express blog # 创建一个express（npm）项目，名字为blogk</li>
+      <li>cd blog; npm install # 进入项目目录，安装所需要的依赖（这里就包括express模块）</li>
+      <li>npm start # 启动项目，也可以执行 node bin/www 来启动项目</li>
+      <li>nodemon bin/www # 这个和上一点可以互相替代，使用这个命令可以在服务器代码发生变化的时候自动重启</li>
+    </ol>
+
+    <h4 id="ex2">另一个例子</h4>
+    <ol>
+      <li>mkdir app; cd app # 创建一个名为 app 的目录</li>
+      <li>bower init # 初始化 bower 项目</li>
+      <li>bower install --save angular # 安装 angular 依赖，并将其保存到 bower.json 中</li>
+      <li>bower install --save bootstrap # 安装 bootstrap 依赖，并将其保存到 bower.json 中</li>
+      <li>在这之后，我们就可以在需要引用angular 和 bootstrap 的网页中加入相应的引用代码</li>
+    </ol>
 
   </body>
 </html>
