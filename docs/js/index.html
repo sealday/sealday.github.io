@@ -38,18 +38,19 @@
     <ul>
       <li><a href="#ex1">关于 express 项目的一个例子</a></li>
       <li><a href="#ex2">关于 angular 前端项目的一个例子</a></li>
+      <li><a href="#ex3">关于已存在项目的一个例子</a></li>
     </ul>
 
     <h4 id="npm">npm 命令</h4>
     <p>初始化 npm 项目的时候可以使用 npm init</p>
-    <p>基本使用方式为 npm install &lt;name&gt; [--save]</p>
+    <p>基本使用方式为 npm install &lt;name&gt; [--save] # --save 参数用以将安装的模块加入到package.json中</p>
     <p>需要安装为命令的时候可以使用 npm install --global &lt;name&gt;</p>
     <p>如果需要通过package.json来安装的话（在当前目录下有package.json），可以直接执行npm install</p>
     <p>更多的使用方式，可以参考 npm help install，或者更通用的 npm help</p>
 
     <h4 id="bower">bower 命令</h4>
     <p>初始化 bower 项目的时候可以使用 bower init</p>
-    <p>基本使用方式为 bower install &lt;name&gt; [--save]</p>
+    <p>基本使用方式为 bower install &lt;name&gt; [--save] # --save 参数用以将安装的组件加入到bower.json中</p>
     <p>如果需要通过bower.json来安装的话（在当前目录下有bower.json），可以直接执行 bower install</p>
     <p>更多的使用方式，可以参考 bower help install，或者更通用的 bower help</p>
 
@@ -84,5 +85,10 @@
       <li>在这之后，我们就可以在需要引用angular 和 bootstrap 的网页中加入相应的引用代码</li>
     </ol>
 
+    <h4 id="ex3">再来一个例子：当这个项目来自github，使用 npm 管理后台，bower 管理前台</h4>
+    <ol>
+      <li>cd &lt;project&gt;; npm install # 安装后台项目依赖</li>
+      <li>cd &lt;client&gt;; bower install; cd - # 安装项目的前端依赖，这里的client是说静态文件所在的位置</li>
+    </ol>
   </body>
 </html>
