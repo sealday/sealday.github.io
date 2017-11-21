@@ -4,4 +4,4 @@ title: 关于
 permalink: /about/
 ---
 
-Hi，这里是守望の者。
+Hi，这里是守望の人。
