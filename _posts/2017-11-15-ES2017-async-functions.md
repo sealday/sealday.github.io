@@ -164,10 +164,44 @@ async.auto({
 原本的错误，而只是根据我们自己的判断原则抛出了一个新的错误。这个其实不算 async 本身的好处，而是因为 async 使得我们可以使用 try-catch 这套异常
 处理逻辑，在 try-catch 中，我们只要不捕获错误，这个错误就会继续传递给上层，不同于使用 callback 方案时需要手动传递错误。
 
+### 测试代码的改写
+
+原代码：
+
+```js
+it('do some async thing', (done) => {
+  process(params, (err, result) => {
+    should.not.exist(err);
+    result.should.eql(expectedResult);
+    done();
+  });
+});
+```
+
+改写后：
+
+```js
+it('do some async thing', async () => {
+  const result = await process(params);
+  result.should.eql(expectedResult);
+});
+```
+
+async 函数风格的自动化测试代码是能被 [Mocha][2] 支持的，因此我们可以进行这种改写。
+
 ## 结论
 
-将生产环境的代码进行整体替换是不现实的，可能会引入各种潜在的问题，但是借助 util.promisify 以及 [Async][1] 的支持，我们可以对新增或者改良的代码
-进行渐进式的替换。
+在写本文之前，为了能得到较为真实的感受，我对投入生产的代码进行了部分改写，在这个过程中基本上围绕：
+
+- 写法是否简洁
+- 迁移是否可行
+- 错误是否能更合理得到处理
+- 是否有比较明显的性能惩罚
+
+进行思考。对于这四点，以目前的结果来看，主要是在于错误处理相对于之前有比较好的体验提升，而其他几点，都没有明显的差异。
+
+迁移也是可行的，虽然将生产环境的代码进行整体替换是不现实的，可能会引入各种潜在的问题，但是借助 util.promisify 以及 
+[Async][1] 的支持，我们可以对新增或者改良的代码进行渐进式的替换。
 
 本文有意避开性能的问题，因为针对性能的话，需要根据实际情况来具体测试代码，但是如果真的很关心大致上的性能，可以参考下面的两个
 参考链接，需要注意的是，其中一份的性能测试已经考虑了 util.promisify 在内。
@@ -179,3 +213,4 @@ async.auto({
 1. [Performance of native ES2015 promises and ES2017 async functions in Node.js v8](https://kyrylkov.com/2017/04/25/native-promises-async-functions-nodejs-8-performance/)
 
 [1]: https://caolan.github.io/async/
+[2]: https://mochajs.org/
