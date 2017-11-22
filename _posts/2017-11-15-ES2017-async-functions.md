@@ -2,6 +2,7 @@
 layout: post
 title:  "ES2017 async functions"
 date:   2017-11-15 18:34:49 +0800
+comments: true
 categories: js
 ---
 之前技术分享会上有人分享了 js 中的异步执行的相关内容，其中提到了 async 函数，这个 ES2017 刚加入到 js 中的语法，
