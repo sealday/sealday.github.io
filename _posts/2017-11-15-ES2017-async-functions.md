@@ -164,7 +164,18 @@ async.auto({
 原本的错误，而只是根据我们自己的判断原则抛出了一个新的错误。这个其实不算 async 本身的好处，而是因为 async 使得我们可以使用 try-catch 这套异常
 处理逻辑，在 try-catch 中，我们只要不捕获错误，这个错误就会继续传递给上层，不同于使用 callback 方案时需要手动传递错误。
 
+## 结论
+
+将生产环境的代码进行整体替换是不现实的，可能会引入各种潜在的问题，但是借助 util.promisify 以及 [Async][1] 的支持，我们可以对新增或者改良的代码
+进行渐进式的替换。
+
+本文有意避开性能的问题，因为针对性能的话，需要根据实际情况来具体测试代码，但是如果真的很关心大致上的性能，可以参考下面的两个
+参考链接，需要注意的是，其中一份的性能测试已经考虑了 util.promisify 在内。
+
+
 ## 参考
 1. [MDN web docs: async_function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
+1. [Node.js 8.0.0 async pattern benchmark](https://lellansin.wordpress.com/2017/06/09/node-js-8-0-0-async-pattern-benchmark/)
+1. [Performance of native ES2015 promises and ES2017 async functions in Node.js v8](https://kyrylkov.com/2017/04/25/native-promises-async-functions-nodejs-8-performance/)
 
 [1]: https://caolan.github.io/async/
