@@ -215,6 +215,7 @@ async 函数风格的自动化测试代码是能被 [Mocha][2] 支持的，因�
 1. [MDN web docs: async_function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
 1. [Node.js 8.0.0 async pattern benchmark](https://lellansin.wordpress.com/2017/06/09/node-js-8-0-0-async-pattern-benchmark/)
 1. [Performance of native ES2015 promises and ES2017 async functions in Node.js v8](https://kyrylkov.com/2017/04/25/native-promises-async-functions-nodejs-8-performance/)
+1. [异步函数 - 提高 Promise 的易用性](https://developers.google.com/web/fundamentals/primers/async-functions?hl=zh-cn)
 
 [1]: https://caolan.github.io/async/
 [2]: https://mochajs.org/
