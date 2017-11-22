@@ -125,7 +125,8 @@ asyncFn()
 
 ### 结合 [Async][1] 与 async
 
-单纯把 [Async][1] 库替换掉并不是一个很好的演化我们代码的办法，而且 [Async][1] 库是支持使用 async 函数的，因此我们就可以做下面这些改造。
+我们是不能单纯把 [Async][1] 替换掉，一方面是全部替换掉代价比较大，另一方面是，[Async][1] 具有更丰富的异步流控制方法。幸运的是，
+[Async][1] 库是支持使用 async 函数的，因此我们就可以做下面这类改造。
 
 ```js
 async.auto({
@@ -148,7 +149,7 @@ async.auto({
 
 ```js
 async.auto({
-  a: async (cb) => {
+  a: async () => {
     const doc = await util.promisify(findOne)();
     if (!doc) {
       throw new Error('doc not found'));
@@ -160,7 +161,7 @@ async.auto({
 });
 ```
 
-代码上没有太大区别，主要是不再传递原本的错误，而只是根据我们自己的判断原则抛出了一个新的错误。
+代码上没有太大区别，主要是将函数 a 改写成 async 函数，其实现里不再传递原本的错误，而只是根据我们自己的判断原则抛出了一个新的错误。
 
 这一点得益于 async 让我们可以使用 try-catch 这个异常处理方案，在 try-catch 这个异常处理方案中，我们只要不捕获错误，
 这个错误就会继续传递给上层，不同于使用 callback 方案时需要手动传递错误。
