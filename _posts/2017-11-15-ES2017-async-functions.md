@@ -86,6 +86,8 @@ const results = await Promise.all([a(), b()]);
 const results = await Promise.all([util.promisify(a)(), util.promisify(b)()]);
 ```
 
+另一种简单形式的 auto：
+
 ```js
 async.auto({
   a: () => {
