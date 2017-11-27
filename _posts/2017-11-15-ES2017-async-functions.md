@@ -193,6 +193,34 @@ it('do some async thing', async () => {
 
 async 函数风格的自动化测试代码是能被 [Mocha][2] 支持的，因此我们可以进行这种改写。
 
+### 个人最常用的 async 表达式
+
+使用 async 表达式，最常用的情况就是
+
+```js
+for (let i = 0; i < 10; i++) {
+  console.time('async');
+  await asyncFn(i);
+  console.timeEnd('async');
+}
+```
+
+如果转换成 [Async][1] 库的话，应该就是写作
+
+```js
+async.timesSeries(10, (n, next) => {
+  console.time('async');
+  asyncFn(n, (err, result) => {
+    console.time('async');
+    next(err, result);
+  });
+}, (err, results) => {
+});
+```
+
+对于这种情况下，借用 [Async][1] 库的写法看起来有点不对称，而且直觉上这个地方可能会发生错误的匹配，
+导致得出错误的时间，当嵌套更多层次的时候，更加明显。
+
 ## 结论
 
 在写本文之前，为了能得到较为真实的感受，我对投入生产的代码进行了部分改写，在这个过程中基本上围绕：
